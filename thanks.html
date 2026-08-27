@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>ご予約ありがとうございます｜Lumière 美容サロン</title>
+<meta name="robots" content="noindex">
+
+<script src="assets/config.js"></script>
+<script src="assets/tracking.js"></script>
+<script src="assets/debug-panel.js" defer></script>
+<link rel="stylesheet" href="assets/style.css">
+<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'><text y='26' font-size='26'>💠</text></svg>">
+</head>
+<body data-page-type="thanks_page">
+
+<header class="header">
+  <div class="container header__inner">
+    <a class="logo" href="index.html"><span class="logo__mark">💠</span><span class="logo__text">Lumière<small>ルミエール 美容サロン</small></span></a>
+  </div>
+</header>
+
+<section class="section">
+  <div class="container container--narrow">
+    <div class="complete complete--page">
+      <div class="complete__icon">✓</div>
+      <h1 class="complete__title">ご予約ありがとうございます</h1>
+      <p class="complete__text">
+        1営業日以内に、ご入力いただいたメールアドレス宛に日程調整のご連絡をいたします。<br>
+        メールが届かない場合は迷惑メールフォルダをご確認ください。
+      </p>
+
+      <!-- ===================================================================
+           ここから下は「練習用の解説」です。実際のサンクスページには不要です。
+           =================================================================== -->
+      <div class="lesson">
+        <h2 class="lesson__title">このページは「サンクスページ方式」の練習用です</h2>
+
+        <div class="lesson__block">
+          <div class="lesson__label">受け取ったパラメータ</div>
+          <dl class="lesson__dl" id="params-view"><dd>読み込み中…</dd></dl>
+        </div>
+
+        <div class="lesson__block">
+          <div class="lesson__label">コンバージョンの取り方は2通りあります</div>
+          <table class="lesson__table">
+            <thead><tr><th></th><th>A. フォーム送信時に発火（このLPの既定）</th><th>B. サンクスページ到達で発火</th></tr></thead>
+            <tbody>
+              <tr><th>やり方</th><td>送信成功時に <code>dataLayer.push({event:'generate_lead'})</code></td><td>URLが <code>/thanks.html</code> のときに発火</td></tr>
+              <tr><th>GTMトリガー</th><td>カスタムイベント <code>generate_lead</code></td><td>ページビュー（Page Path が <code>/thanks.html</code> を含む）</td></tr>
+              <tr><th>長所</th><td>ページ遷移が無いフォームでも取れる。パラメータを自由に載せられる</td><td>設定が簡単。開発者に頼まなくても設定できる</td></tr>
+              <tr><th>短所</th><td>実装（dataLayer.push）が必要</td><td>URLを直接開かれると水増しされる／リロードで二重計上</td></tr>
+              <tr><th>使いどころ</th><td>本命。実務ではこちらを推奨</td><td>外部フォームツールなど、コードを触れないとき</td></tr>
+            </tbody>
+          </table>
+        </div>
+
+        <div class="lesson__block">
+          <div class="lesson__label">B方式をこの場で試す</div>
+          <p class="lesson__text">
+            下のボタンを押すと、B方式（サンクスページ到達をCVとみなす）の想定で
+            <code>generate_lead</code> を1回 push します。<br>
+            <strong>注意：</strong>A方式とB方式を両方有効にすると、1件のお申込みでCVが2件計上されます（＝計測ミスの典型例）。
+            必ずどちらか一方にしてください。
+          </p>
+          <button class="btn" type="button" id="fire-thanks-cv">サンクスページ方式で generate_lead を送る</button>
+          <p class="lesson__fired" id="fired-msg" hidden>送信しました。右下のパネルで確認してください。</p>
+        </div>
+      </div>
+
+      <div class="complete__actions">
+        <a class="btn btn--light" href="index.html">LPに戻る</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<footer class="footer">
+  <div class="container footer__inner">
+    <div><div class="logo logo--footer"><span class="logo__mark">💠</span><span class="logo__text">Lumière</span></div>
+    <p class="footer__addr">※ 本サイトは広告計測の学習用に作成した架空のLPです。</p></div>
+  </div>
+</footer>
+
+<script>
+/* ---------------------------------------------------------------------------
+ *  サンクスページ側の処理（練習用）
+ * ------------------------------------------------------------------------- */
+(function () {
+  var q = new URLSearchParams(location.search);
+
+  /* 受け取ったパラメータを画面に出す */
+  var dl = document.getElementById('params-view');
+  dl.innerHTML = '';
+  var keys = Array.from(q.keys());
+  if (!keys.length) {
+    dl.innerHTML = '<dd class="is-empty">パラメータはありません（URLを直接開いた状態です）</dd>';
+  } else {
+    keys.forEach(function (k) {
+      var wrap = document.createElement('div');
+      var dt = document.createElement('dt'); dt.textContent = k;
+      var dd = document.createElement('dd'); dd.textContent = q.get(k);
+      wrap.appendChild(dt); wrap.appendChild(dd); dl.appendChild(wrap);
+    });
+  }
+
+  /* B方式のデモ発火 */
+  var fired = false;
+  document.getElementById('fire-thanks-cv').addEventListener('click', function () {
+    if (fired) return;
+    fired = true;
+    this.disabled = true;
+    window.MT.push('generate_lead', {
+      form_name: q.get('form_name') || 'free_consultation',
+      lead_id: q.get('lead_id') || ('thanks_' + Date.now()),
+      value: (window.MEASUREMENT_CONFIG || {}).LEAD_VALUE || 0,
+      currency: (window.MEASUREMENT_CONFIG || {}).LEAD_CURRENCY || 'JPY',
+      method: 'thanks_page'
+    });
+    document.getElementById('fired-msg').hidden = false;
+  });
+})();
+</script>
+</body>
+</html>

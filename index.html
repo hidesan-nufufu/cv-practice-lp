@@ -1,0 +1,286 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>【無料カウンセリング】Lumière 美容サロン｜あなたに合う施術が30分でわかる</title>
+<meta name="description" content="カウンセリング実績12,000件。無理な勧誘は一切なし。30分の無料カウンセリングで、あなたの肌質と骨格に合う施術プランをご提案します。">
+
+<!-- =========================================================================
+     ★ 計測スクリプトの読み込み順（ここが重要）
+     -------------------------------------------------------------------------
+     1. config.js      … どのIDに送るかの設定
+     2. tracking.js    … dataLayer を作り、GTM を読み込む
+                          ※ GTM より先に dataLayer を用意する必要があるため
+                             tracking.js は必ず GTM スニペットより前に置きます
+     3. (GTM本体)      … tracking.js の中から挿入されます
+     4. debug-panel.js … 練習用の可視化パネル
+     5. app.js         … LPの動き＋イベント発火（DOM操作なので defer でOK）
+     ========================================================================= -->
+<script src="assets/config.js"></script>
+<script src="assets/tracking.js"></script>
+<script src="assets/debug-panel.js" defer></script>
+<script src="assets/app.js" defer></script>
+
+<link rel="stylesheet" href="assets/style.css">
+<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'><text y='26' font-size='26'>💠</text></svg>">
+</head>
+<body data-page-type="landing_page">
+
+<!-- GTM の noscript は tracking.js が body 先頭に挿入します（MODE:'gtm' のとき） -->
+
+<!-- ============================ ヘッダー ============================ -->
+<header class="header">
+  <div class="container header__inner">
+    <a class="logo" href="#top">
+      <span class="logo__mark">💠</span>
+      <span class="logo__text">Lumière<small>ルミエール 美容サロン</small></span>
+    </a>
+    <div class="header__right">
+      <span class="header__tel">0120-000-000<small>受付 10:00-20:00</small></span>
+      <!-- data-cta="header" が cta_position パラメータになります -->
+      <a class="btn btn--sm" href="#form" data-cta="header">無料カウンセリング</a>
+    </div>
+  </div>
+</header>
+
+<!-- ============================ ファーストビュー ============================ -->
+<section class="hero" id="top">
+  <div class="container hero__inner">
+    <div class="hero__copy">
+      <p class="hero__eyebrow">カウンセリング実績 12,000件／無理な勧誘は一切ありません</p>
+      <h1 class="hero__title">
+        「なんとなく」で選ばない。<br>
+        <em>あなたの肌に合う施術</em>が<br>
+        30分でわかる。
+      </h1>
+      <p class="hero__lead">
+        肌質・骨格・生活リズムを国家資格保有のカウンセラーが分析し、
+        あなた専用の施術プランを無料でご提案します。当日の契約は不要です。
+      </p>
+      <div class="hero__cta">
+        <a class="btn btn--lg" href="#form" data-cta="hero" data-cta-text="無料カウンセリングを予約する">
+          無料カウンセリングを予約する
+        </a>
+        <span class="hero__note">所要30分／オンライン相談も可</span>
+      </div>
+      <ul class="hero__badges">
+        <li>初回0円</li>
+        <li>当日キャンセルOK</li>
+        <li>勧誘なし</li>
+      </ul>
+    </div>
+    <div class="hero__visual" aria-hidden="true">
+      <div class="hero__card">
+        <div class="hero__cardTop">あなたの診断結果（例）</div>
+        <dl class="hero__spec">
+          <div><dt>肌タイプ</dt><dd>混合・乾燥寄り</dd></div>
+          <div><dt>おすすめ施術</dt><dd>ハイドラフェイシャル</dd></div>
+          <div><dt>推奨頻度</dt><dd>3週間に1回</dd></div>
+          <div><dt>想定期間</dt><dd>約4ヶ月</dd></div>
+        </dl>
+        <div class="hero__cardFoot">※ カウンセリング当日にお渡しします</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============================ 悩み ============================ -->
+<section class="section section--tint">
+  <div class="container">
+    <h2 class="section__title">こんなお悩みはありませんか？</h2>
+    <ul class="worries">
+      <li><span>01</span>自己流のケアを続けているが、変化が実感できない</li>
+      <li><span>02</span>サロンごとに言うことが違って、何を信じればいいか分からない</li>
+      <li><span>03</span>高額なコースをすすめられそうで、相談に行くのが不安</li>
+      <li><span>04</span>忙しくて通えるか分からず、申し込みに踏み切れない</li>
+    </ul>
+  </div>
+</section>
+
+<!-- ============================ サービス概要 ============================ -->
+<section class="section" id="service">
+  <div class="container">
+    <h2 class="section__title">Lumière の無料カウンセリング</h2>
+    <p class="section__lead">
+      「売る」ためではなく「見極める」ための30分です。<br>
+      通う必要がないと判断した場合は、その旨を正直にお伝えします。
+    </p>
+    <div class="cards">
+      <article class="card">
+        <div class="card__num">01</div>
+        <h3>肌測定＋骨格診断</h3>
+        <p>専用機器で水分量・皮脂量・キメを数値化し、骨格タイプと合わせて分析します。感覚ではなくデータで判断します。</p>
+      </article>
+      <article class="card">
+        <div class="card__num">02</div>
+        <h3>あなた専用プランの提案</h3>
+        <p>施術内容・頻度・期間・総額をその場で明示。他サロンとの比較検討に使える資料としてお持ち帰りいただけます。</p>
+      </article>
+      <article class="card">
+        <div class="card__num">03</div>
+        <h3>ホームケアの見直し</h3>
+        <p>今お使いの化粧品で続けてよいもの／やめたほうがよいものを仕分けします。買い替えの押し売りはしません。</p>
+      </article>
+    </div>
+  </div>
+</section>
+
+<!-- ============================ 流れ ============================ -->
+<section class="section section--tint" id="flow">
+  <div class="container">
+    <h2 class="section__title">当日の流れ</h2>
+    <ol class="flow">
+      <li><span class="flow__step">STEP 1</span><strong>受付・カルテ記入</strong><em>約5分</em></li>
+      <li><span class="flow__step">STEP 2</span><strong>肌測定・骨格診断</strong><em>約10分</em></li>
+      <li><span class="flow__step">STEP 3</span><strong>結果説明とプラン提案</strong><em>約10分</em></li>
+      <li><span class="flow__step">STEP 4</span><strong>質疑応答・お見送り</strong><em>約5分</em></li>
+    </ol>
+    <p class="flow__note">その場でのご契約は不要です。持ち帰ってご検討ください。</p>
+  </div>
+</section>
+
+<!-- ============================ 中間CTA ============================ -->
+<section class="midcta">
+  <div class="container midcta__inner">
+    <p class="midcta__text">まずは今の肌状態を、数字で知るところから。</p>
+    <a class="btn btn--lg btn--light" href="#form" data-cta="mid" data-cta-text="無料カウンセリングを予約する">
+      無料カウンセリングを予約する
+    </a>
+  </div>
+</section>
+
+<!-- ============================ お客様の声 ============================ -->
+<section class="section" id="voice">
+  <div class="container">
+    <h2 class="section__title">お客様の声</h2>
+    <div class="voices">
+      <blockquote class="voice">
+        <p>「勧誘されるものだと構えて行ったら、"今のケアで十分です"と言われて拍子抜けしました。逆に信頼できたので、後日通い始めました。」</p>
+        <cite>30代・会社員</cite>
+      </blockquote>
+      <blockquote class="voice">
+        <p>「総額と回数を紙で出してもらえたので、家族に相談して決められました。曖昧なまま契約せずに済んだのが良かったです。」</p>
+        <cite>40代・自営業</cite>
+      </blockquote>
+      <blockquote class="voice">
+        <p>「化粧品を全部持って行ったら、1本ずつ"これは続けて、これはやめて"と仕分けしてくれました。無駄遣いが減りました。」</p>
+        <cite>20代・学生</cite>
+      </blockquote>
+    </div>
+  </div>
+</section>
+
+<!-- ============================ FAQ ============================ -->
+<section class="section section--tint" id="faq">
+  <div class="container">
+    <h2 class="section__title">よくあるご質問</h2>
+    <div class="faq">
+      <details><summary>本当に無料ですか？</summary><p>はい。カウンセリング・肌測定・プラン提案まで一切費用はかかりません。施術をご希望の場合のみ、別途料金が発生します。</p></details>
+      <details><summary>その日に契約しないといけませんか？</summary><p>いいえ。当日のご契約は不要です。資料をお持ち帰りいただき、ご検討ください。</p></details>
+      <details><summary>オンラインでも受けられますか？</summary><p>可能です。肌測定は行えませんが、写真と問診をもとにプランをご提案します。</p></details>
+      <details><summary>予約の変更・キャンセルは？</summary><p>当日でもご連絡いただければ無料で変更・キャンセルできます。キャンセル料はいただきません。</p></details>
+    </div>
+    <div class="faq__cta">
+      <a class="btn" href="#form" data-cta="faq" data-cta-text="疑問が解けたら予約する">疑問が解けたら予約する</a>
+    </div>
+  </div>
+</section>
+
+<!-- ============================ フォーム ============================ -->
+<section class="section formsec" id="form">
+  <div class="container container--narrow">
+    <h2 class="section__title">無料カウンセリングのご予約</h2>
+    <p class="section__lead">入力は30秒。折り返し、担当者から日程調整のご連絡をいたします。</p>
+
+    <!-- ---- 入力エリア ---- -->
+    <div id="form-area">
+      <form id="lead-form" class="form" novalidate>
+        <div class="form__row">
+          <label class="form__label" for="f-name">お名前 <span class="req">必須</span></label>
+          <input class="form__input" type="text" id="f-name" name="name" placeholder="山田 花子" autocomplete="name">
+          <p class="field-error" data-error-for="name" hidden></p>
+        </div>
+
+        <div class="form__row">
+          <label class="form__label" for="f-email">メールアドレス <span class="req">必須</span></label>
+          <input class="form__input" type="email" id="f-email" name="email" placeholder="hanako@example.com" autocomplete="email">
+          <p class="field-error" data-error-for="email" hidden></p>
+        </div>
+
+        <div class="form__row">
+          <label class="form__label" for="f-menu">気になる施術 <span class="opt">任意</span></label>
+          <select class="form__input" id="f-menu" name="menu">
+            <option value="">選択してください</option>
+            <option value="facial">フェイシャル</option>
+            <option value="hydra">ハイドラフェイシャル</option>
+            <option value="hair_removal">医療脱毛</option>
+            <option value="body">ボディケア</option>
+            <option value="undecided">まだ決めていない</option>
+          </select>
+        </div>
+
+        <div class="form__row form__row--check">
+          <label class="checkbox">
+            <input type="checkbox" name="agree" id="f-agree">
+            <span><a href="#" onclick="return false;">個人情報の取り扱い</a>に同意します <span class="req">必須</span></span>
+          </label>
+          <p class="field-error" data-error-for="agree" hidden></p>
+        </div>
+
+        <button class="btn btn--lg btn--full" type="submit" data-cta="form_submit_button" data-cta-text="無料カウンセリングを予約する">
+          無料カウンセリングを予約する
+        </button>
+        <p class="form__note">※ これは計測練習用のダミーフォームです。入力内容はどこにも送信されません。</p>
+      </form>
+    </div>
+
+    <!-- ---- 送信完了状態（generate_lead 発火後に表示） ---- -->
+    <div id="form-complete" class="complete" hidden>
+      <div class="complete__icon">✓</div>
+      <h3 class="complete__title">ご予約を受け付けました</h3>
+      <p class="complete__text">
+        ご入力ありがとうございます。1営業日以内に担当者よりご連絡いたします。
+      </p>
+      <div class="complete__box">
+        <div class="complete__boxTitle">計測ログ（練習用の表示）</div>
+        <p>この瞬間 <code>generate_lead</code> が dataLayer に push されました。</p>
+        <p>lead_id: <code id="lead-id-view">-</code></p>
+        <p class="complete__hint">
+          右下のデバッグパネル →「dataLayer」タブで中身を、<br>
+          「送信リクエスト」タブで実際に外部へ飛んだか確認してください。
+        </p>
+      </div>
+      <div class="complete__actions">
+        <a class="btn btn--light" id="go-thanks" href="thanks.html">サンクスページ方式も試す</a>
+        <button class="btn btn--ghost" type="button" id="retry-form">もう一度フォームを試す</button>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============================ フッター ============================ -->
+<footer class="footer">
+  <div class="container footer__inner">
+    <div>
+      <div class="logo logo--footer"><span class="logo__mark">💠</span><span class="logo__text">Lumière</span></div>
+      <p class="footer__addr">※ 本サイトは広告計測の学習用に作成した架空のLPです。実在のサロンではありません。</p>
+    </div>
+    <nav class="footer__nav">
+      <a href="#service">サービス</a>
+      <a href="#flow">当日の流れ</a>
+      <a href="#faq">よくある質問</a>
+      <a href="#form">予約する</a>
+    </nav>
+  </div>
+</footer>
+
+<!-- ============================ スティッキーCTA（モバイル） ============================ -->
+<div class="sticky">
+  <a class="btn btn--full" href="#form" data-cta="sticky" data-cta-text="無料カウンセリングを予約する">
+    無料カウンセリングを予約する
+  </a>
+</div>
+
+</body>
+</html>
