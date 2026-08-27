@@ -26,11 +26,11 @@ window.MEASUREMENT_CONFIG = {
 
   // ---- 動作モード ----------------------------------------------------------
   // 'off' | 'gtm' | 'direct'
-  MODE: 'off',
+  MODE: 'gtm',
 
   // ---- Google Tag Manager --------------------------------------------------
   // GTM 管理画面の左上に出ている GTM-XXXXXXX を貼り付けます
-  GTM_ID: 'GTM-XXXXXXX',
+  GTM_ID: 'GTM-TX7MFFL2',
 
   // GTM のプレビュー(Tag Assistant)を使うときに、GA4 の DebugView へ流すかどうか。
   // GTM プレビュー中は自動で debug_mode が付くので通常 false のままでOK。
