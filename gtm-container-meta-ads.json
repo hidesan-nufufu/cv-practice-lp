@@ -27,12 +27,12 @@
         "variableId": "101",
         "name": "定数 - Meta Pixel ID",
         "type": "c",
-        "notes": "Metaイベントマネージャで発行される15〜16桁の数字。インポート後にここを書き換える。",
+        "notes": "Metaイベントマネージャのデータセット cv-practice-lp のID（実値）",
         "parameter": [
           {
             "type": "TEMPLATE",
             "key": "value",
-            "value": "000000000000000"
+            "value": "3369725536543572"
           }
         ],
         "fingerprint": "0",
@@ -44,12 +44,12 @@
         "variableId": "102",
         "name": "定数 - Google広告 コンバージョンID",
         "type": "c",
-        "notes": "Google広告のコンバージョン設定に出る AW- で始まるID。インポート後に書き換える。",
+        "notes": "Google広告 250-406-1801「無料カウンセリング申込」のコンバージョンID（実値）",
         "parameter": [
           {
             "type": "TEMPLATE",
             "key": "value",
-            "value": "AW-000000000"
+            "value": "AW-16717326362"
           }
         ],
         "fingerprint": "0",
@@ -61,12 +61,12 @@
         "variableId": "103",
         "name": "定数 - Google広告 コンバージョンラベル",
         "type": "c",
-        "notes": "同じ画面に出るラベル文字列。インポート後に書き換える。",
+        "notes": "同コンバージョンアクションのラベル（実値）",
         "parameter": [
           {
             "type": "TEMPLATE",
             "key": "value",
-            "value": "AbCdEfGhIjKlMnOpQr"
+            "value": "e9_DCOLBpOkcEJrQuKM-"
           }
         ],
         "fingerprint": "0",
