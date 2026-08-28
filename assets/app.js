@@ -41,7 +41,7 @@
         var label = (el.getAttribute('data-cta-text') || el.textContent || '').trim().slice(0, 60);
 
         window.MT.push('cta_click', {
-          cta_position: position,          // hero / header / mid / faq / sticky / form
+          cta_position: position,          // header / hero / mid / faq / sticky / form_submit_button
           cta_text: label,                 // ボタンの文言
           cta_destination: el.getAttribute('href') || '',
           form_name: FORM_NAME
@@ -201,7 +201,14 @@
     // サンクスページ方式を試すリンクに lead_id を引き継ぐ
     var link = document.getElementById('go-thanks');
     if (link) {
-      var q = new URLSearchParams(window.location.search);
+      /* ★ UTM を引き継がない理由（実務で重要）
+       *   着地URLのクエリをそのまま内部リンクに付けると「自己参照UTM」になります。
+       *   サイト内の移動なのに GA4 が「広告から新しく来た人」と誤認し、
+       *   セッションが途中で切れて流入元がバラけます。
+       *   UTM は "外部から自分のサイトへ入ってくるリンク" にだけ付けるものです。
+       *   引き継ぐのは lead_id と form_name だけで十分です
+       *   （流入元は tracking.js が sessionStorage で保持しています）。 */
+      var q = new URLSearchParams();
       q.set('lead_id', leadId);
       q.set('form_name', FORM_NAME);
       link.setAttribute('href', 'thanks.html?' + q.toString());
