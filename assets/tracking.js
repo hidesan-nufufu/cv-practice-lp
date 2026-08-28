@@ -279,13 +279,6 @@
   var loaded = { gtm: false, ga4: false, meta: false };
 
   if (mode === 'gtm') {
-    /* __DEBUG_INJECT__ */
-    if (CFG.FORCE_GA4_DEBUG_MODE) {
-      // GTM経由でもGA4のDebugViewに出すための一時的な指定
-      window.dataLayer.push({ 'gtm.start': new Date().getTime() });
-      window.gtag = window.gtag || function () { window.dataLayer.push(arguments); };
-      window.gtag('set', 'debug_mode', true);
-    }
     loaded.gtm = loadGTM(CFG.GTM_ID);
   } else if (mode === 'direct') {
     loaded.ga4 = loadGA4Direct(CFG.GA4_MEASUREMENT_ID);
