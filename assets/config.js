@@ -35,7 +35,7 @@ window.MEASUREMENT_CONFIG = {
   // GTM のプレビュー(Tag Assistant)を使うときに、GA4 の DebugView へ流すかどうか。
   // GTM プレビュー中は自動で debug_mode が付くので通常 false のままでOK。
   // GTM を使わず direct モードで DebugView を見たいときだけ true にします。
-  FORCE_GA4_DEBUG_MODE: false,
+  FORCE_GA4_DEBUG_MODE: true,
 
   // ---- GA4 (MODE: 'direct' のときだけ使用) ---------------------------------
   // GA4 管理画面 > 管理 > データストリーム で確認できる G-XXXXXXXXXX
