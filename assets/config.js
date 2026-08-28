@@ -39,7 +39,7 @@ window.MEASUREMENT_CONFIG = {
 
   // ---- GA4 (MODE: 'direct' のときだけ使用) ---------------------------------
   // GA4 管理画面 > 管理 > データストリーム で確認できる G-XXXXXXXXXX
-  GA4_MEASUREMENT_ID: 'G-XXXXXXXXXX',
+  GA4_MEASUREMENT_ID: 'G-SR8174Q7RF',
 
   // ---- Meta Pixel (MODE: 'direct' のときだけ使用) --------------------------
   // Meta イベントマネージャ > データソース で確認できる 15〜16桁の数字
