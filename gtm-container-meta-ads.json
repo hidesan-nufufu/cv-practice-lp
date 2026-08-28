@@ -1,0 +1,421 @@
+{
+  "exportFormatVersion": 2,
+  "exportTime": "2026-08-28 00:00:00",
+  "containerVersion": {
+    "path": "accounts/6373692418/containers/262461993/versions/0",
+    "accountId": "6373692418",
+    "containerId": "262461993",
+    "containerVersionId": "0",
+    "name": "Meta Pixel + Google広告 CV 追加分",
+    "description": "既存のGA4設定に「統合」で追加する。インポート後に3つの定数変数を実IDへ書き換えること。",
+    "container": {
+      "path": "accounts/6373692418/containers/262461993",
+      "accountId": "6373692418",
+      "containerId": "262461993",
+      "name": "cv-practice-lp",
+      "publicId": "GTM-TX7MFFL2",
+      "usageContext": [
+        "WEB"
+      ],
+      "fingerprint": "0",
+      "tagManagerUrl": "https://tagmanager.google.com/#/container/accounts/6373692418/containers/262461993/workspaces"
+    },
+    "variable": [
+      {
+        "accountId": "6373692418",
+        "containerId": "262461993",
+        "variableId": "101",
+        "name": "定数 - Meta Pixel ID",
+        "type": "c",
+        "notes": "Metaイベントマネージャで発行される15〜16桁の数字。インポート後にここを書き換える。",
+        "parameter": [
+          {
+            "type": "TEMPLATE",
+            "key": "value",
+            "value": "000000000000000"
+          }
+        ],
+        "fingerprint": "0",
+        "formatValue": {}
+      },
+      {
+        "accountId": "6373692418",
+        "containerId": "262461993",
+        "variableId": "102",
+        "name": "定数 - Google広告 コンバージョンID",
+        "type": "c",
+        "notes": "Google広告のコンバージョン設定に出る AW- で始まるID。インポート後に書き換える。",
+        "parameter": [
+          {
+            "type": "TEMPLATE",
+            "key": "value",
+            "value": "AW-000000000"
+          }
+        ],
+        "fingerprint": "0",
+        "formatValue": {}
+      },
+      {
+        "accountId": "6373692418",
+        "containerId": "262461993",
+        "variableId": "103",
+        "name": "定数 - Google広告 コンバージョンラベル",
+        "type": "c",
+        "notes": "同じ画面に出るラベル文字列。インポート後に書き換える。",
+        "parameter": [
+          {
+            "type": "TEMPLATE",
+            "key": "value",
+            "value": "AbCdEfGhIjKlMnOpQr"
+          }
+        ],
+        "fingerprint": "0",
+        "formatValue": {}
+      }
+    ],
+    "trigger": [
+      {
+        "accountId": "6373692418",
+        "containerId": "262461993",
+        "triggerId": "1",
+        "name": "CE - cta_click",
+        "type": "CUSTOM_EVENT",
+        "notes": "CTAクリック",
+        "customEventFilter": [
+          {
+            "type": "EQUALS",
+            "parameter": [
+              {
+                "type": "TEMPLATE",
+                "key": "arg0",
+                "value": "{{_event}}"
+              },
+              {
+                "type": "TEMPLATE",
+                "key": "arg1",
+                "value": "cta_click"
+              }
+            ]
+          }
+        ],
+        "fingerprint": "0"
+      },
+      {
+        "accountId": "6373692418",
+        "containerId": "262461993",
+        "triggerId": "3",
+        "name": "CE - generate_lead",
+        "type": "CUSTOM_EVENT",
+        "notes": "★最終CV",
+        "customEventFilter": [
+          {
+            "type": "EQUALS",
+            "parameter": [
+              {
+                "type": "TEMPLATE",
+                "key": "arg0",
+                "value": "{{_event}}"
+              },
+              {
+                "type": "TEMPLATE",
+                "key": "arg1",
+                "value": "generate_lead"
+              }
+            ]
+          }
+        ],
+        "fingerprint": "0"
+      },
+      {
+        "accountId": "6373692418",
+        "containerId": "262461993",
+        "triggerId": "5",
+        "name": "CE - scroll_depth",
+        "type": "CUSTOM_EVENT",
+        "notes": "25/50/75/100%到達",
+        "customEventFilter": [
+          {
+            "type": "EQUALS",
+            "parameter": [
+              {
+                "type": "TEMPLATE",
+                "key": "arg0",
+                "value": "{{_event}}"
+              },
+              {
+                "type": "TEMPLATE",
+                "key": "arg1",
+                "value": "scroll_depth"
+              }
+            ]
+          }
+        ],
+        "fingerprint": "0"
+      }
+    ],
+    "tag": [
+      {
+        "accountId": "6373692418",
+        "containerId": "262461993",
+        "tagId": "101",
+        "name": "Meta - Pixel ベースコード",
+        "type": "html",
+        "notes": "Initialization - All Pages。全ページで最初に1回だけ実行し、fbq を使えるようにする。",
+        "parameter": [
+          {
+            "type": "TEMPLATE",
+            "key": "html",
+            "value": "<script>\n/* Meta Pixel ベースコード\n   Initialization - All Pages で、他のMetaタグより先に発火させます。 */\n!function(f,b,e,v,n,t,s){if(f.fbq)return;n=f.fbq=function(){\n  n.callMethod ? n.callMethod.apply(n,arguments) : n.queue.push(arguments)};\n  if(!f._fbq)f._fbq=n; n.push=n; n.loaded=!0; n.version='2.0'; n.queue=[];\n  t=b.createElement(e); t.async=!0; t.src=v;\n  s=b.getElementsByTagName(e)[0]; s.parentNode.insertBefore(t,s)}\n(window,document,'script','https://connect.facebook.net/en_US/fbevents.js');\n\nfbq('init', '{{定数 - Meta Pixel ID}}');\nfbq('track', 'PageView');\n</script>"
+          },
+          {
+            "type": "BOOLEAN",
+            "key": "supportDocumentWrite",
+            "value": "false"
+          }
+        ],
+        "fingerprint": "0",
+        "firingTriggerId": [
+          "2147479573"
+        ],
+        "tagFiringOption": "ONCE_PER_EVENT",
+        "monitoringMetadata": {
+          "type": "MAP"
+        }
+      },
+      {
+        "accountId": "6373692418",
+        "containerId": "262461993",
+        "tagId": "102",
+        "name": "Meta - CTA_Click",
+        "type": "html",
+        "notes": "CTAクリック。カスタムイベントなので広告の最適化対象にはできず、分析用。",
+        "parameter": [
+          {
+            "type": "TEMPLATE",
+            "key": "html",
+            "value": "<script>\n/* CTAクリック → カスタムイベント CTA_Click\n   標準イベントではないので trackCustom を使います。 */\nif (typeof fbq === 'function') {\n  fbq('trackCustom', 'CTA_Click', {\n    cta_position: '{{DLV - cta_position}}'\n  });\n}\n</script>"
+          },
+          {
+            "type": "BOOLEAN",
+            "key": "supportDocumentWrite",
+            "value": "false"
+          }
+        ],
+        "fingerprint": "0",
+        "firingTriggerId": [
+          "1"
+        ],
+        "tagFiringOption": "ONCE_PER_EVENT",
+        "monitoringMetadata": {
+          "type": "MAP"
+        },
+        "setupTag": [
+          {
+            "tagName": "Meta - Pixel ベースコード",
+            "stopOnSetupFailure": false
+          }
+        ]
+      },
+      {
+        "accountId": "6373692418",
+        "containerId": "262461993",
+        "tagId": "103",
+        "name": "Meta - Lead",
+        "type": "html",
+        "notes": "★MetaのCV。標準イベント Lead。広告セットのコンバージョンイベントに指定できる。",
+        "parameter": [
+          {
+            "type": "TEMPLATE",
+            "key": "html",
+            "value": "<script>\n/* フォーム送信完了 → 標準イベント Lead ★これがMetaのCV\n   eventID に lead_id を渡すことで、将来 Conversions API を併用しても\n   同じCVが2件に数えられないようにしています（重複排除）。 */\nif (typeof fbq === 'function') {\n  fbq('track', 'Lead', {\n    content_name: '{{DLV - form_name}}',\n    value: {{DLV - value}},\n    currency: '{{DLV - currency}}'\n  }, {\n    eventID: '{{DLV - lead_id}}'\n  });\n}\n</script>"
+          },
+          {
+            "type": "BOOLEAN",
+            "key": "supportDocumentWrite",
+            "value": "false"
+          }
+        ],
+        "fingerprint": "0",
+        "firingTriggerId": [
+          "3"
+        ],
+        "tagFiringOption": "ONCE_PER_EVENT",
+        "monitoringMetadata": {
+          "type": "MAP"
+        },
+        "setupTag": [
+          {
+            "tagName": "Meta - Pixel ベースコード",
+            "stopOnSetupFailure": false
+          }
+        ]
+      },
+      {
+        "accountId": "6373692418",
+        "containerId": "262461993",
+        "tagId": "104",
+        "name": "Google広告 - コンバージョンリンカー",
+        "type": "gclidw",
+        "notes": "広告クリック時のgclidをファーストパーティCookieに保存する。CVタグより先に全ページで動かす。",
+        "parameter": [
+          {
+            "type": "BOOLEAN",
+            "key": "enableCrossDomain",
+            "value": "false"
+          },
+          {
+            "type": "BOOLEAN",
+            "key": "enableUrlPassthrough",
+            "value": "false"
+          },
+          {
+            "type": "BOOLEAN",
+            "key": "acceptIncoming",
+            "value": "true"
+          },
+          {
+            "type": "TEMPLATE",
+            "key": "linkerScope",
+            "value": "ALL"
+          }
+        ],
+        "fingerprint": "0",
+        "firingTriggerId": [
+          "2147479553"
+        ],
+        "tagFiringOption": "ONCE_PER_EVENT",
+        "monitoringMetadata": {
+          "type": "MAP"
+        }
+      },
+      {
+        "accountId": "6373692418",
+        "containerId": "262461993",
+        "tagId": "105",
+        "name": "Google広告 - CV - 無料カウンセリング申込",
+        "type": "awct",
+        "notes": "★Google広告のCV。取引IDに lead_id を入れて重複排除する。IDとラベルはインポート後に定数変数を書き換える。",
+        "parameter": [
+          {
+            "type": "BOOLEAN",
+            "key": "enableConversionLinker",
+            "value": "true"
+          },
+          {
+            "type": "TEMPLATE",
+            "key": "conversionId",
+            "value": "{{定数 - Google広告 コンバージョンID}}"
+          },
+          {
+            "type": "TEMPLATE",
+            "key": "conversionLabel",
+            "value": "{{定数 - Google広告 コンバージョンラベル}}"
+          },
+          {
+            "type": "TEMPLATE",
+            "key": "conversionValue",
+            "value": "{{DLV - value}}"
+          },
+          {
+            "type": "TEMPLATE",
+            "key": "currencyCode",
+            "value": "{{DLV - currency}}"
+          },
+          {
+            "type": "TEMPLATE",
+            "key": "orderId",
+            "value": "{{DLV - lead_id}}"
+          },
+          {
+            "type": "BOOLEAN",
+            "key": "enableProductReporting",
+            "value": "false"
+          },
+          {
+            "type": "BOOLEAN",
+            "key": "enableNewCustomerReporting",
+            "value": "false"
+          }
+        ],
+        "fingerprint": "0",
+        "firingTriggerId": [
+          "3"
+        ],
+        "tagFiringOption": "ONCE_PER_EVENT",
+        "monitoringMetadata": {
+          "type": "MAP"
+        }
+      },
+      {
+        "accountId": "6373692418",
+        "containerId": "262461993",
+        "tagId": "106",
+        "name": "GA4 - イベント - scroll_depth",
+        "type": "gaawe",
+        "notes": "LP独自のスクロール計測。GA4拡張計測の scroll(90%) とは別名なので衝突しない。",
+        "parameter": [
+          {
+            "type": "BOOLEAN",
+            "key": "sendEcommerceData",
+            "value": "false"
+          },
+          {
+            "type": "TEMPLATE",
+            "key": "eventName",
+            "value": "scroll_depth"
+          },
+          {
+            "type": "LIST",
+            "key": "eventSettingsTable",
+            "list": [
+              {
+                "type": "MAP",
+                "map": [
+                  {
+                    "type": "TEMPLATE",
+                    "key": "parameter",
+                    "value": "percent_scrolled"
+                  },
+                  {
+                    "type": "TEMPLATE",
+                    "key": "parameterValue",
+                    "value": "{{DLV - percent_scrolled}}"
+                  }
+                ]
+              },
+              {
+                "type": "MAP",
+                "map": [
+                  {
+                    "type": "TEMPLATE",
+                    "key": "parameter",
+                    "value": "page_location"
+                  },
+                  {
+                    "type": "TEMPLATE",
+                    "key": "parameterValue",
+                    "value": "{{Page URL}}"
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "type": "TEMPLATE",
+            "key": "measurementIdOverride",
+            "value": "{{定数 - GA4 測定ID}}"
+          }
+        ],
+        "fingerprint": "0",
+        "firingTriggerId": [
+          "5"
+        ],
+        "tagFiringOption": "ONCE_PER_EVENT",
+        "monitoringMetadata": {
+          "type": "MAP"
+        }
+      }
+    ],
+    "fingerprint": "0"
+  }
+}
